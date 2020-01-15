@@ -24,4 +24,7 @@ all: $(NAME)
 $(NAME): $(SRCS)
 	$(CC) -o $(NAME) $(FLAGS) $(SRCS) -I$(INC)
 
-re : all
+clean :
+	@/bin/rm -f $(NAME)
+
+re : clean all
