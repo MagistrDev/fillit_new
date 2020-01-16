@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   place.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Ecelsa <ecelsa@school21.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 00:09:03 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/15 03:24:27 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/16 12:23:19 by Ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,18 @@
 void	border_right(t_uint64 *arr, int sq)
 {
 	int i;
+	t_uint64	mask;
 
 	i = -1;
 	while (++i < 4)
 	{
-		*(arr + i) |= ft_mask_shift(16 - sq); 
+		*(arr + i) |= mask; 
 		*(arr + i) <<= 16;
-		*(arr + i) |= ft_mask_shift(16 - sq);
+		*(arr + i) |= mask;
 		*(arr + i) <<= 16;
-		*(arr + i) |= ft_mask_shift(16 - sq);
+		*(arr + i) |= mask;
 		*(arr + i) <<= 16;
-		*(arr + i) |= ft_mask_shift(16 - sq);
+		*(arr + i) |= mask;
 	}
 }
 

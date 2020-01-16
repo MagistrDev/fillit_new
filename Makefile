@@ -19,12 +19,12 @@ SRCS = main.c\
 
 #all: $(NAME)
 
-all: $(NAME)	
+all: $(NAME).exe	
 
-$(NAME): $(SRCS)
+$(NAME).exe: $(SRCS)
 	$(CC) -o $(NAME) $(FLAGS) $(SRCS) -I$(INC)
 
 clean :
-	@/bin/rm -f $(NAME)
-
+#	@/bin/rm -f $(NAME)
+	del $(NAME).exe
 re : clean all
