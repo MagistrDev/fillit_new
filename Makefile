@@ -17,8 +17,6 @@ SRCS = main.c\
 	$(SRC_DIR)print.c\
 	$(SRC_DIR)tet_algorithm.c\
 
-#all: $(NAME)
-
 all: $(NAME).exe	
 
 $(NAME).exe: $(SRCS)
