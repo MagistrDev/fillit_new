@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   place.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ecelsa <ecelsa@school21.com>               +#+  +:+       +#+        */
+/*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 00:09:03 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/16 14:51:12 by Ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/17 19:50:25 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,9 @@ int		check_set(t_fillit *tetr)
 	sq = 4;
 	i = -1;
 	border_right(b_r, sq);
-	border_right(b_b, sq);
+	border_bottom(b_b, sq);
 	col_tetr = (tetr->prev - tetr) + 1;
+	printf("col_tetr in check set %i\n", col_tetr);
 	flag = 1;
 	while (++i < col_tetr)
 		flag = (!((tetr + i)->set)) ? 0 : 1;

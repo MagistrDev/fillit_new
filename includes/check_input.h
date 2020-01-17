@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_input.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ecelsa <ecelsa@school21.com>               +#+  +:+       +#+        */
+/*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 21:59:52 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/16 12:24:07 by Ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/17 20:04:10 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 
 # include "fillit.h"
 
-void		conv_shtoarr(t_fillit *fig);
-void		sh_tl_bit(t_fillit *fig);
-void		ft_check_input(int argc, char **argv);
 char		*ft_input_arg(int argc, char **argv);
+void		sh_tl_bit(t_fillit *fig);
+void		conv_chtosh(t_fillit *fig);
+void		conv_shtoarr(t_fillit *fig);
+void		ft_check_input(int argc, char **argv);
+void		fil_struct(t_fillit *tetr, char *buf, int n_elem, int col_tetr);
 t_fillit	*create_mas(int argc, char **argv);
 int			check_buf(char *buf);
 

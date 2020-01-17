@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ecelsa <ecelsa@school21.com>               +#+  +:+       +#+        */
+/*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 22:10:17 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/16 14:49:10 by Ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/17 20:06:43 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,24 @@ void		sh_tl_bit(t_fillit *fig)
 		fig->tetr_bit >>= 1;
 }
 
+void		conv_chtosh(t_fillit *fig)
+{
+	int		i;
+
+	i = 0;
+	while (fig->tetr_char[i] != 0)
+		i++;
+	i--;
+	while (--i >= 0)
+	{
+		if ((fig->tetr_char[i] == '#') || (fig->tetr_char[i] == '.'))
+		{
+			fig->tetr_bit <<= 1;
+			fig->tetr_bit |= (fig->tetr_char[i] == '#') ? 1 : 0;
+		}
+	}
+}
+
 void		conv_shtoarr(t_fillit *fig)
 {
 	(void)fig;
@@ -100,12 +118,11 @@ void		conv_shtoarr(t_fillit *fig)
 	fig->tetr[0] |= (fig->tetr_bit & 0xf);
 }
 
+
 void		fil_struct(t_fillit *tetr, char *buf, int n_elem, int col_tetr)
 {
-	int			i;
 	t_fillit	*fig;
 
-	i = 0;
 	fig = tetr + n_elem;
 	fig->next = (n_elem == col_tetr - 1) ? tetr : (tetr + n_elem + 1);
 	fig->prev = (n_elem == 0) ? (tetr + col_tetr - 1) : (tetr + n_elem - 1);
@@ -113,17 +130,7 @@ void		fil_struct(t_fillit *tetr, char *buf, int n_elem, int col_tetr)
 	ft_strncpy(fig->tetr_char, &buf[n_elem * 21], 20);
 	fig->tetr_char[20] = 0;
 	fig->tetr_bit = 0;
-	while (fig->tetr_char[i] != 0)
-		i++;
-	i--;
-	while (--i >= 0)
-	{
-		if ((fig->tetr_char[i] == '#') || (fig->tetr_char[i] == '.'))
-		{
-			fig->tetr_bit <<= 1;
-			fig->tetr_bit |= (fig->tetr_char[i] == '#') ? 1 : 0;
-		}
-	}
+	conv_chtosh(fig);
 	sh_tl_bit(fig);
 	conv_shtoarr(fig);
 }

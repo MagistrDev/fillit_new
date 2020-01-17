@@ -2,7 +2,7 @@ NAME = fillit
 
 CC = gcc
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 
 SRC_DIR = srcs/
 
@@ -24,12 +24,12 @@ SRCS = main.c\
 	$(SRC_DIR)print.c\
 	$(SRC_DIR)tet_algorithm.c\
 
-all: $(NAME).exe	
+all: $(NAME)	
 
-$(NAME).exe: $(SRCS) $(HEADER)
+$(NAME): $(SRCS) $(HEADER)
 	$(CC) -o $(NAME) $(FLAGS) $(SRCS) -I./$(INC)
 
 clean :
-#	@/bin/rm -f $(NAME)
-	del $(NAME).exe
+	@/bin/rm -f $(NAME)
+#	del $(NAME).exe
 re : clean all
