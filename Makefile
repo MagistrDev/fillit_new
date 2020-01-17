@@ -6,9 +6,16 @@ FLAGS = -Wall -Wextra -Werror
 
 SRC_DIR = srcs/
 
-INC = ./includes/
+INC = includes/
 
 OBJ = objects/
+
+HEADER = $(INC)fillit.h\
+	$(INC)sub.h\
+	$(INC)check_input.h\
+	$(INC)place.h\
+	$(INC)print.h\
+	$(INC)shift_bits.h\
 
 SRCS = main.c\
 	$(SRC_DIR)shift_bits.c\
@@ -19,8 +26,8 @@ SRCS = main.c\
 
 all: $(NAME).exe	
 
-$(NAME).exe: $(SRCS)
-	$(CC) -o $(NAME) $(FLAGS) $(SRCS) -I$(INC)
+$(NAME).exe: $(SRCS) $(HEADER)
+	$(CC) -o $(NAME) $(FLAGS) $(SRCS) -I./$(INC)
 
 clean :
 #	@/bin/rm -f $(NAME)
