@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ecelsa <ecelsa@school21.com>               +#+  +:+       +#+        */
+/*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 18:50:02 by Ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/16 12:24:42 by Ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/17 20:38:08 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,8 @@ int		main(int argc, char **argv)
 
 	printf("start\n");
 	tetr = create_mas(argc, argv);
-	(void)tetr;
-//	place_tetr(tetr);
 	check_set(tetr);
 	free(tetr);
-	tetr = NULL;	
-	return  (0);
-	
+	tetr = NULL;
+	return (0);
 }

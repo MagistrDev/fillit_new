@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ecelsa <ecelsa@school21.com>               +#+  +:+       +#+        */
+/*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 01:22:12 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/16 15:07:41 by Ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/17 20:37:48 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,15 @@
 
 void	print_tetr(t_fillit *tetr, int sq)
 {
-	int i;
-	t_fillit ttt;
-	
+	int			i;
+	t_fillit	ttt;
+
 	i = 0;
 	(void)tetr;
 	(void)ttt;
 	(void)sq;
 	while (i < 256)
 	{
-		
 		i++;
 	}
 }

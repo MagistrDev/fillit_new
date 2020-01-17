@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 00:09:03 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/17 19:50:25 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/17 20:37:19 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ int		arrcmp(t_uint64 *arr1, t_uint64 *arr2, int arr_size)
 
 void	border_right(t_uint64 *arr, int sq)
 {
-	int i;
+	int			i;
 	t_uint64	mask;
 
 	mask = ft_mask_shift(16 - sq);
 	i = -1;
 	while (++i < 4)
 	{
-		*(arr + i) |= mask; 
+		*(arr + i) |= mask;
 		*(arr + i) <<= 16;
 		*(arr + i) |= mask;
 		*(arr + i) <<= 16;
@@ -52,13 +52,10 @@ void	border_bottom(t_uint64 *arr, int sq)
 	short		*sub;
 
 	sub = (short*)arr;
-	(void)sq;
-	(void)sub;
-
 	mask = 0xffffffffffffffff;
 	while (sq < 16)
 	{
-		*(sub + sq) = mask; 	
+		*(sub + sq) = mask;
 		sq++;
 	}
 }
@@ -68,16 +65,9 @@ int		check_set(t_fillit *tetr)
 	int			flag;
 	int			col_tetr;
 	int			i;
-	int			sq;
-	t_uint64	b_r[4];
-	t_uint64	b_b[4];
-			
-	sq = 4;
+
 	i = -1;
-	border_right(b_r, sq);
-	border_bottom(b_b, sq);
 	col_tetr = (tetr->prev - tetr) + 1;
-	printf("col_tetr in check set %i\n", col_tetr);
 	flag = 1;
 	while (++i < col_tetr)
 		flag = (!((tetr + i)->set)) ? 0 : 1;
@@ -88,8 +78,6 @@ void	place_tetr(t_fillit *tetr)
 {
 	while (!(check_set(tetr)))
 	{
-		
 	}
 	(void)tetr;
-	
 }

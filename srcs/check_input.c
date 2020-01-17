@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 22:10:17 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/17 20:06:43 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/17 20:34:05 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,16 @@ char		*ft_input_arg(int argc, char **argv)
 		}
 	}
 	if (argc > 2)
-		{
-			printf("error fd");
-			return (NULL);
-		}
+	{
+		printf("error fd");
+		return (NULL);
+	}
 	fr = read(fd, buf, 660);
 	if (fr < 0)
-		{
-			write(1, "error file\n", 11);
-			return (NULL);
-		}
+	{
+		write(1, "error file\n", 11);
+		return (NULL);
+	}
 	if (fd > 2)
 		close(fd);
 	buf[fr] = 0;
@@ -101,7 +101,8 @@ void		conv_chtosh(t_fillit *fig)
 		if ((fig->tetr_char[i] == '#') || (fig->tetr_char[i] == '.'))
 		{
 			fig->tetr_bit <<= 1;
-			fig->tetr_bit |= (fig->tetr_char[i] == '#') ? 1 : 0;
+			if (fig->tetr_char[i] == '#')
+				fig->tetr_bit |= 1;
 		}
 	}
 }
@@ -118,12 +119,15 @@ void		conv_shtoarr(t_fillit *fig)
 	fig->tetr[0] |= (fig->tetr_bit & 0xf);
 }
 
-
 void		fil_struct(t_fillit *tetr, char *buf, int n_elem, int col_tetr)
 {
+	int			i;
 	t_fillit	*fig;
 
+	i = 4;
 	fig = tetr + n_elem;
+	while (i--)
+		fig->tetr[i] = 0;
 	fig->next = (n_elem == col_tetr - 1) ? tetr : (tetr + n_elem + 1);
 	fig->prev = (n_elem == 0) ? (tetr + col_tetr - 1) : (tetr + n_elem - 1);
 	fig->set = 0;
