@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 00:09:03 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/18 19:41:02 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/18 20:44:51 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		arrcmp(t_uint64 *arr1, t_uint64 *arr2, int arr_size)
 	while (++i < arr_size)
 	{
 		if (*(arr1 + i) & *(arr2 + i))
-			cmp++;
+			cmp = 1;
 	}
 	return (cmp);
 }
@@ -76,9 +76,17 @@ int		check_set_all(t_fillit *tetr)
 
 void	sh_tet_nextline(t_fillit *fig, int sq)
 {
-	(void)sq;
-	shift_bit_arr_left(fig->tetr, 4, 16);
-	
+	shift_bit_arr_left(fig->tetr, 4, 16 - (sq - fig->width_tetr + 1));
+}
+
+void	place_tetr_on_map(t_fillit *fig, t_uint64 *map)
+{
+	int		i;
+
+	i = 4;
+	while (i--)
+		map[i] |= fig->tetr[i];
+	fig->set = 1;
 }
 
 void	place_tetr(t_fillit *tetr, t_uint64 *map, int sq)
@@ -86,9 +94,12 @@ void	place_tetr(t_fillit *tetr, t_uint64 *map, int sq)
 	t_uint64	b_r[4];
 	t_uint64	b_b[4];
 
-	sq = 4;
 	border_right(b_r, sq);
 	border_bottom(b_b, sq);
+	
 	if (!arrcmp(tetr->tetr, map, 4))
-		;
+		place_tetr_on_map(tetr, map);
+	else
+		shift_bit_arr(tetr->tetr, 4, 1);
+	
 }
