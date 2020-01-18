@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 22:10:17 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/18 18:13:17 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/18 19:52:36 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,38 @@ void		conv_shtoarr(t_fillit *fig)
 	fig->tetr[0] |= (fig->tetr_bit & 0xf);
 }
 
+void		search_height_tetr(t_fillit *fig)
+{
+	int		height_tetr;
+	short	bit;
+	
+	bit = fig->tetr_bit;
+	height_tetr = 0;
+	while (bit & 0xf)
+	{
+		height_tetr++;
+		bit >>= 4;
+	}
+	fig->height_tetr = height_tetr;
+}
+
+void		search_width_tetr(t_fillit *fig)
+{
+	short	bit;
+	int		width_tetr;
+	
+	bit = fig->tetr_bit;
+	width_tetr = 0;
+	bit |= (bit >> 4) | (bit >> 8) | (bit >> 12);
+	bit &= 0xf;
+	while (bit & 1)
+	{
+		bit >>= 1;
+		width_tetr++;
+	}
+	fig->width_tetr = width_tetr;
+}
+
 void		fil_struct(t_fillit *tetr, char *buf, int n_elem, int col_tetr)
 {
 	int			i;
@@ -136,6 +168,8 @@ void		fil_struct(t_fillit *tetr, char *buf, int n_elem, int col_tetr)
 	fig->tetr_bit = 0;
 	conv_chtosh(fig);
 	sh_tl_bit(fig);
+	search_width_tetr(fig);
+	search_height_tetr(fig);
 	conv_shtoarr(fig);
 }
 

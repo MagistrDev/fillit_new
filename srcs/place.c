@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 00:09:03 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/18 18:11:53 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/18 19:41:02 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,13 @@ int		check_set_all(t_fillit *tetr)
 	while (++i < col_tetr)
 		flag = (!((tetr + i)->set)) ? 0 : 1;
 	return (flag);
+}
+
+void	sh_tet_nextline(t_fillit *fig, int sq)
+{
+	(void)sq;
+	shift_bit_arr_left(fig->tetr, 4, 16);
+	
 }
 
 void	place_tetr(t_fillit *tetr, t_uint64 *map, int sq)
