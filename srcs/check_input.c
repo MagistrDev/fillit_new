@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 22:10:17 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/18 19:52:36 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/18 22:03:03 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,14 +88,18 @@ void		sh_tl_bit(t_fillit *fig)
 		fig->tetr_bit >>= 1;
 }
 
+/*
+**	i = 0;
+**	while (fig->tetr_char[i] != 0)
+**		i++;
+**	i--;
+*/
+
 void		conv_chtosh(t_fillit *fig)
 {
 	int		i;
 
-	i = 0;
-	while (fig->tetr_char[i] != 0)
-		i++;
-	i--;
+	i = 19;
 	while (--i >= 0)
 	{
 		if ((fig->tetr_char[i] == '#') || (fig->tetr_char[i] == '.'))
@@ -163,7 +167,7 @@ void		fil_struct(t_fillit *tetr, char *buf, int n_elem, int col_tetr)
 	fig->next = (n_elem == col_tetr - 1) ? tetr : (tetr + n_elem + 1);
 	fig->prev = (n_elem == 0) ? (tetr + col_tetr - 1) : (tetr + n_elem - 1);
 	fig->set = 0;
- 	strncpy(fig->tetr_char, &buf[n_elem * 21], 20);
+ 	ft_strncpy(fig->tetr_char, &buf[n_elem * 21], 20);
 	fig->tetr_char[20] = 0;
 	fig->tetr_bit = 0;
 	conv_chtosh(fig);
@@ -189,6 +193,7 @@ t_fillit	*create_mas(int argc, char **argv)
 	while (++i < col_tetr)
 		fil_struct(tetr, buf, i, col_tetr);
 	free(buf);
+	buf = NULL;
 	return (tetr);
 }
 
