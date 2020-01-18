@@ -6,14 +6,14 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 22:10:17 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/17 20:34:05 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/18 18:13:17 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include "fillit.h"
 
-int			ft_strlen(char *str)
+int		 	ft_strlen(char *str)
 {
 	int		i;
 
@@ -44,7 +44,7 @@ char		*ft_strncpy(char *dest, const char *src, size_t n)
 	return (dest);
 }
 
-char		*ft_input_arg(int argc, char **argv)
+char		*input_arg(int argc, char **argv)
 {
 	int		fd;
 	int		fr;
@@ -131,7 +131,7 @@ void		fil_struct(t_fillit *tetr, char *buf, int n_elem, int col_tetr)
 	fig->next = (n_elem == col_tetr - 1) ? tetr : (tetr + n_elem + 1);
 	fig->prev = (n_elem == 0) ? (tetr + col_tetr - 1) : (tetr + n_elem - 1);
 	fig->set = 0;
-	ft_strncpy(fig->tetr_char, &buf[n_elem * 21], 20);
+ 	strncpy(fig->tetr_char, &buf[n_elem * 21], 20);
 	fig->tetr_char[20] = 0;
 	fig->tetr_bit = 0;
 	conv_chtosh(fig);
@@ -147,7 +147,7 @@ t_fillit	*create_mas(int argc, char **argv)
 	int			i;
 
 	i = -1;
-	buf = ft_input_arg(argc, argv);
+	buf = input_arg(argc, argv);
 	if (!(check_buf(buf)))
 		printf("exit");
 	col_tetr = (ft_strlen(buf) + 1) / 21;

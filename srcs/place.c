@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 00:09:03 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/17 20:37:19 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/18 18:11:53 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	border_right(t_uint64 *arr, int sq)
 	int			i;
 	t_uint64	mask;
 
-	mask = ft_mask_shift(16 - sq);
+	mask = mask_shift(16 - sq);
 	i = -1;
 	while (++i < 4)
 	{
@@ -60,7 +60,7 @@ void	border_bottom(t_uint64 *arr, int sq)
 	}
 }
 
-int		check_set(t_fillit *tetr)
+int		check_set_all(t_fillit *tetr)
 {
 	int			flag;
 	int			col_tetr;
@@ -74,10 +74,14 @@ int		check_set(t_fillit *tetr)
 	return (flag);
 }
 
-void	place_tetr(t_fillit *tetr)
+void	place_tetr(t_fillit *tetr, t_uint64 *map, int sq)
 {
-	while (!(check_set(tetr)))
-	{
-	}
-	(void)tetr;
+	t_uint64	b_r[4];
+	t_uint64	b_b[4];
+
+	sq = 4;
+	border_right(b_r, sq);
+	border_bottom(b_b, sq);
+	if (!arrcmp(tetr->tetr, map, 4))
+		;
 }

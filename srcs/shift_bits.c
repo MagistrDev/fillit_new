@@ -6,13 +6,13 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 19:18:55 by Ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/17 19:50:14 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/18 18:07:35 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_uint64	ft_mask_shift(int shift)
+t_uint64	mask_shift(int shift)
 {
 	t_uint64	r;
 	int			i;
@@ -24,18 +24,18 @@ t_uint64	ft_mask_shift(int shift)
 	return (r);
 }
 
-void		ft_shift_bit_arr(t_uint64 *arr, int arr_size, int shift)
+void		shift_bit_arr(t_uint64 *arr, int arr_size, int shift)
 {
 	if (shift >= 0)
-		ft_shift_bit_arr_left(arr, arr_size, shift);
+		shift_bit_arr_left(arr, arr_size, shift);
 	else
 	{
 		shift *= -1;
-		ft_shift_bit_arr_right(arr, arr_size, shift);
+		shift_bit_arr_right(arr, arr_size, shift);
 	}
 }
 
-void		ft_shift_bit_arr_left(t_uint64 *arr, int arr_size, int shift)
+void		shift_bit_arr_left(t_uint64 *arr, int arr_size, int shift)
 {
 	t_uint64	mask;
 	int			sh;
@@ -45,7 +45,7 @@ void		ft_shift_bit_arr_left(t_uint64 *arr, int arr_size, int shift)
 	sh = shift;
 	while (sh > 64)
 		sh -= 64;
-	mask = ft_mask_shift(sh);
+	mask = mask_shift(sh);
 	while (--i >= 0)
 	{
 		if (sh == 64)
@@ -58,10 +58,10 @@ void		ft_shift_bit_arr_left(t_uint64 *arr, int arr_size, int shift)
 		}
 	}
 	if (shift > 63)
-		ft_shift_bit_arr_left(arr, arr_size, shift - sh);
+		shift_bit_arr_left(arr, arr_size, shift - sh);
 }
 
-void		ft_shift_bit_arr_right(t_uint64 *arr, int arr_size, int shift)
+void		shift_bit_arr_right(t_uint64 *arr, int arr_size, int shift)
 {
 	t_uint64	mask;
 	int			sh;
@@ -72,7 +72,7 @@ void		ft_shift_bit_arr_right(t_uint64 *arr, int arr_size, int shift)
 	arr_size--;
 	while (sh > 64)
 		sh -= 64;
-	mask = ft_mask_shift(-1 * sh);
+	mask = mask_shift(-1 * sh);
 	while (i < arr_size)
 	{
 		if (sh == 64)
@@ -86,5 +86,5 @@ void		ft_shift_bit_arr_right(t_uint64 *arr, int arr_size, int shift)
 		i++;
 	}
 	if (shift > 63)
-		ft_shift_bit_arr_right(arr, arr_size, shift - sh);
+		shift_bit_arr_right(arr, arr_size, shift - sh);
 }
