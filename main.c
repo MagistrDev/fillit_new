@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 18:50:02 by Ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/19 02:18:41 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/19 03:26:24 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,24 @@ int		main(int argc, char **argv)
 				i--;
 				remove_fig(tetr + i, map);
 				if (i == -1)
+				{
 					sq++;
+					i = 0;
+					/*while (i-- >= 1)
+						map[i] = 0;*/
+				}
 				else 
 					shift_bit_arr((tetr + i)->tetr, 4, 1);
 			}
 			else 
 			{
-				if (err_cmp & 1)
+				if ((err_cmp & 1) && !(err_cmp & 2))
 					shift_bit_arr((tetr + i)->tetr, 4, 1);
 				if (err_cmp & 2)
 					sh_tet_nextline(tetr + i, sq);
 			}
 		}
+		place_tetr(tetr + i, map, sq);
 		i++;
 	}
 	free(tetr);

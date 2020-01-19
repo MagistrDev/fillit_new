@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 00:09:03 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/19 02:19:00 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/19 02:54:56 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ void	border_bottom(t_uint64 *arr, int sq)
 
 	sub = (short*)arr;
 	mask = 0xffffffffffffffff;
+	arr[0] = 0;
+	arr[1] = 0;
+	arr[2] = 0;
+	arr[3] = 0;
 	while (sq < 16)
 	{
 		*(sub + sq) = mask;
@@ -128,14 +132,7 @@ void	remove_fig(t_fillit *fig, t_uint64 *map)
 
 int		place_tetr(t_fillit *tetr, t_uint64 *map, int sq)
 {
-	int			flag;
-
 	(void)sq;
-	flag = 0;
-	while (!flag)
-	{
-	}
-	if (flag)
-		place_tetr_on_map(tetr, map);
+	place_tetr_on_map(tetr, map);
 	return (tetr->set);
 }
