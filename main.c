@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 18:50:02 by Ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/19 03:26:24 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/19 05:17:05 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int		main(int argc, char **argv)
 		place_tetr(tetr + i, map, sq);
 		i++;
 	}
+	test(tetr->tetr, sq);
 	free(tetr);
 	tetr = NULL;
 	return (0);

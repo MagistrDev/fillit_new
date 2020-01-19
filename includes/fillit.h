@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 18:50:42 by Ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/18 17:40:41 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/19 04:26:44 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,5 @@
 # include "check_input.h"
 # include "shift_bits.h"
 # include "place.h"
+# include "print.h"
 #endif
