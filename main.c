@@ -6,11 +6,21 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 18:50:02 by Ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/19 05:17:05 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/19 05:50:28 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+int			ft_sqrt(int nbr)
+{
+	int	sqrt;
+
+	sqrt = 1;
+	while (sqrt * sqrt < nbr)
+		sqrt++;
+	return (sqrt);
+}
 
 int		main(int argc, char **argv)
 {
@@ -22,7 +32,6 @@ int		main(int argc, char **argv)
 	int			sq;
 
 	printf("start\n");
-	sq = 4;
 	err_cmp = 0;
 	i = 4;
 	while (i--)
@@ -30,8 +39,10 @@ int		main(int argc, char **argv)
 	tetr = create_mas(argc, argv);
 	i = 0;
 	col_tetr = tetr->prev - tetr + 1;	
+	sq = ft_sqrt(col_tetr * 4);
 	while (i < col_tetr)
 	{
+		//printf(" %i", i);
 		conv_shtoarr(tetr + i);
 		while ((err_cmp = fig_cmp(tetr + i, map, sq)))
 		{
@@ -44,8 +55,6 @@ int		main(int argc, char **argv)
 				{
 					sq++;
 					i = 0;
-					/*while (i-- >= 1)
-						map[i] = 0;*/
 				}
 				else 
 					shift_bit_arr((tetr + i)->tetr, 4, 1);
