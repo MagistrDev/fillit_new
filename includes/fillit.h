@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 18:50:42 by Ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/22 22:46:04 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/22 23:24:54 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # endif
 # if __WINDOWS__
 #  include <io.h>
-# endif
+# endif 
 # include <stdlib.h>
 # include <fcntl.h>
 # include "libft.h"

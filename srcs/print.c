@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 01:22:12 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/22 22:47:05 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/22 23:02:31 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,4 +105,16 @@ void	print_map(t_fillit *tetr, int sq)
 		i++;
 	}
 	printf("%i ---\n%s\n---\n", sq * (sq + 1) + 1 , buf);
+}
+
+void		print_table(t_fillit *tetr, int sq)
+{
+	char			buf[300];
+	int				col_tetr;
+
+	ft_memset(buf, '.',300);
+	(void)sq;
+	(void)col_tetr;
+	(void)tetr;
+	printf("\n %s\n", buf);
 }

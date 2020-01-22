@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 21:59:52 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/18 19:51:43 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/22 23:43:40 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ void		search_width_tetr(t_fillit *fig);
 void		check_input(int argc, char **argv);
 void		fil_struct(t_fillit *tetr, char *buf, int n_elem, int col_tetr);
 t_fillit	*create_mas(int argc, char **argv);
-int			check_buf(char *buf);
+int			check_buf(char *buf); 
 
 #endif

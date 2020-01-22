@@ -23,26 +23,27 @@ HEADER = fillit.h\
 	print.h\
 	shift_bits.h\
 
-SRCS = main.c\
-	shift_bits.c\
-	check_input.c\
-	place.c\
-	print.c\
+SRCS = shift_bits.c\
 	tet_algorithm.c\
+	check_input.c\
+	print.c\
+	place.c\
+	main.c
 
 all: lib $(NAME)
 
 lib :
 	make -C libft/
 
-$(NAME) : $(OBJ)
+$(NAME) : $(addprefix includes/,$(HEADER)) $(OBJ)
 	$(CC) -o $(NAME) $(FLAGS) $(addprefix $(OBJ_DIR), $(SRCS:.c=.o)) -I./$(INC_DIR)  -L./libft -I./libft/ -lft
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INC_DIR)%.h
-	$(CC) $(FLAGS) -o $@ -c $< -I./$(INC_DIR) -I./libft/
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INC_DIR)%.h 
+	$(CC) $(FLAGS) -o $@ -c $< -I./$(INC_DIR) -I./libft/ 
 
 clean :
 	/bin/rm -f $(OBJ) 
+
 
 fclean: clean
 	/bin/rm -f $(NAME)

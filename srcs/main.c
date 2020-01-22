@@ -6,11 +6,11 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 18:50:02 by Ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/22 17:08:43 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/22 23:25:03 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "print.h"
 
 int			ft_sqrt(int nbr)
 {
@@ -69,8 +69,9 @@ int		main(int argc, char **argv)
 		place_tetr(tetr + i, map, sq);
 		i++;
 	}
-	print_map(tetr, sq);
+	print_table(tetr, sq);
 	free(tetr);
 	tetr = NULL;
 	return (0);
 }
+ 

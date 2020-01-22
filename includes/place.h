@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 00:09:32 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/22 22:42:09 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/22 23:24:30 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int		place_tetr(t_fillit *tetr, t_uint64 *map, int sq);
 int		arrcmp(t_uint64 *arr1, t_uint64 *arr2, int arr_size);
 void	sh_tet_nextline(t_fillit *fig, int sq);
 void	remove_fig(t_fillit *fig, t_uint64 *map);
-void	place_tetr_on_map(t_fillit *fig, t_uint64 *map);
+void	place_tetr_on_map(t_fillit *fig, t_uint64 *map); 
 
 #endif
