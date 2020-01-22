@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 01:22:12 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/19 05:37:41 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/22 20:37:31 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	print_map(t_fillit *tetr, int sq)
 		n = 0;
 		sub = (unsigned short*)((tetr + n_elem)->tetr);
 		while (n < sq)
-		{
+		{ 
 			i = 0;
 			while (i < sq)
 			{

@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 00:09:03 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/22 18:30:58 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/22 20:36:32 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,4 +127,4 @@ int		place_tetr(t_fillit *tetr, t_uint64 *map, int sq)
 	(void)sq;
 	place_tetr_on_map(tetr, map);
 	return (tetr->set);
-}
+} 
