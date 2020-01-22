@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 00:09:03 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/19 02:54:56 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/22 18:30:58 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,20 +95,12 @@ void	place_tetr_on_map(t_fillit *fig, t_uint64 *map)
 	fig->set = 1;
 }
 
-/*
-**		fig_cmp
-**	0bit - cmp map
-**	1bit - cmp right border
-**	2bit - cmp bottom border (exit range square)
-**
-*/
-
 int		fig_cmp(t_fillit *fig, t_uint64 *map, int sq)
 {
 	t_uint64	b_r[4];
 	t_uint64	b_b[4];
-	int			cmp;	
-	
+	int			cmp;
+
 	cmp = 0;
 	border_right(b_r, sq);
 	border_bottom(b_b, sq);

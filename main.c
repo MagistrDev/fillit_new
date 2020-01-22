@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 18:50:02 by Ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/19 06:25:06 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/22 17:08:43 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,10 @@ int		main(int argc, char **argv)
 		map[i] = 0;
 	tetr = create_mas(argc, argv);
 	i = 0;
-	col_tetr = tetr->prev - tetr + 1;	
+	col_tetr = tetr->prev - tetr + 1;
 	sq = ft_sqrt(col_tetr * 4);
 	while (i < col_tetr)
 	{
-		//printf(" %i", i);
 		conv_shtoarr(tetr + i);
 		while ((err_cmp = fig_cmp(tetr + i, map, sq)))
 		{
@@ -56,10 +55,10 @@ int		main(int argc, char **argv)
 					sq++;
 					i = 0;
 				}
-				else 
+				else
 					shift_bit_arr((tetr + i)->tetr, 4, 1);
 			}
-			else 
+			else
 			{
 				if ((err_cmp & 1) && !(err_cmp & 2))
 					shift_bit_arr((tetr + i)->tetr, 4, 1);

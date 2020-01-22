@@ -24,12 +24,14 @@ SRCS = main.c\
 	$(SRC_DIR)print.c\
 	$(SRC_DIR)tet_algorithm.c\
 
-all: $(NAME)	
+all: $(NAME) $(SRCS)
 
 $(NAME): $(SRCS) $(HEADER)
-	$(CC) -o $(NAME) $(FLAGS) $(SRCS) -I./$(INC)
+	make -C libft/
+	$(CC) -o $(NAME) $(FLAGS) $(SRCS) -I./$(INC) -I./libft/ -L./libft/  -lft
 
+compile: 
 clean :
 	@/bin/rm -f $(NAME)
-#	del $(NAME).exe
+
 re : clean all

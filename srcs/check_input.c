@@ -6,43 +6,11 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 22:10:17 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/19 03:22:31 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/22 17:31:08 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "fillit.h"
-
-int		 	ft_strlen(char *str)
-{
-	int		i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char		*ft_strncpy(char *dest, const char *src, size_t n)
-{
-	char	*s1;
-	char	*s2;
-	size_t	i;
-
-	if (dest == NULL && src == NULL)
-		return (NULL);
-	i = 0;
-	s1 = dest;
-	s2 = (char*)src;
-	while (i < n)
-	{
-		*s1 = *s2;
-		s1++;
-		s2 += (!*s2) ? 0 : 1;
-		i++;
-	}
-	return (dest);
-}
 
 char		*input_arg(int argc, char **argv)
 {
@@ -87,13 +55,6 @@ void		sh_tl_bit(t_fillit *fig)
 	while (!(fig->tetr_bit & 0x1111))
 		fig->tetr_bit >>= 1;
 }
-
-/*
-**	i = 0;
-**	while (fig->tetr_char[i] != 0)
-**		i++;
-**	i--;
-*/
 
 void		conv_chtosh(t_fillit *fig)
 {
