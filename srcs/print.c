@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 01:22:12 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/22 20:37:31 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/22 22:47:05 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	test(t_uint64 *arr, int sq)
 			buf_i++;
 		}
 	}
-	printf("---\n%s\n---\n",buf);
+//	printf("---\n%s\n---\n",buf);
 }
 
 void	print_map(t_fillit *tetr, int sq)
@@ -72,7 +72,7 @@ void	print_map(t_fillit *tetr, int sq)
 	int				n_elem;
 	int				x;
 	unsigned short	*sub;
-	
+
 	x = 0;
 	n_elem = 0;
 	col_tetr = tetr->prev - tetr + 1;
@@ -105,5 +105,4 @@ void	print_map(t_fillit *tetr, int sq)
 		i++;
 	}
 	printf("%i ---\n%s\n---\n", sq * (sq + 1) + 1 , buf);
-		
 }

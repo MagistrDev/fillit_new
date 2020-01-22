@@ -12,8 +12,9 @@ LIBS_DIR = libft
 
 LIBS = ft
 
-OBJ = objects/
+OBJ_DIR = obj/
 
+OBJ = $(addprefix $(OBJ_DIR),$(SRCS:.c=.o))
 
 HEADER = fillit.h\
 	sub.h\
@@ -29,27 +30,21 @@ SRCS = main.c\
 	print.c\
 	tet_algorithm.c\
 
-#all: $(NAME) $(addprefix $(SRC_DIR),$(SRCS)) $(addprefix $(INC_DIR)/,$(HEADER))
-all: $(NAME) $(addprefix $(SRC_DIR),$(SRCS))
+all: lib $(NAME)
 
-#$(NAME): $(addprefix $(SRC_DIR),$(SRCS)) $(addprefix $(INC_DIR)/,$(HEADER))
-#$(NAME): shift_bits.o check_input.o place.o print.o tet_algorithm.o
-#	make -C $(LIBS_DIR)
-#	$(CC) $(FLAGS) -c $(addprefix $(SRC_DIR),$(SRCS)) $(addprefix -I./,$(INC_DIR)) -I./libft
-#	gcc -o $(name) $(FLAGS) main.c $(SRCS:.c=.o) -I./$(INC_DIR)  -L./libft -I./libft/ -lft
+lib :
+	make -C libft/
 
-$(NAME) : $(SRCS:.c=.o) 
-	$(CC) -o $(NAME) $(FLAGS) $(SRCS:.c=.o) -I./$(INC_DIR)  -L./libft -I./libft/ -lft
-	$(CC) $(FLAGS) -c -I./$(INC_DIR) -I./libft $(addprefix $(SRC_DIR),$(SRCS))
+$(NAME) : $(OBJ)
+	$(CC) -o $(NAME) $(FLAGS) $(addprefix $(OBJ_DIR), $(SRCS:.c=.o)) -I./$(INC_DIR)  -L./libft -I./libft/ -lft
 
-#$(SRCS:.c=.o) :
-#	$(CC) $(FLAGS) -c -I./$(INC_DIR) -I./libft $(addprefix $(SRC_DIR),$(SRCS))
-
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INC_DIR)%.h
+	$(CC) $(FLAGS) -o $@ -c $< -I./$(INC_DIR) -I./libft/
 
 clean :
-	@/bin/rm -f $(SRCS:.c=.o) 
+	/bin/rm -f $(OBJ) 
 
 fclean: clean
-	@/bin/rm -f $(NAME)
+	/bin/rm -f $(NAME)
 
 re : fclean all 
