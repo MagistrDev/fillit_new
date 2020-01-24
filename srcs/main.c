@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 18:50:02 by Ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/24 18:03:34 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/24 18:47:09 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		main(int argc, char **argv)
 		ft_putstr("error\n");
 		return (0);
 	}
-	ft_bzero(map,32);	
+	ft_bzero(map, 32);
 	col_tetr = tetr->prev - tetr + 1;
 	sq = ft_sqrt(col_tetr * 4);
 	err_cmp = 0;

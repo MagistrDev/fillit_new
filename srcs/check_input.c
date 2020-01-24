@@ -6,13 +6,13 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 22:10:17 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/24 18:04:46 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/24 18:43:34 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char		*input_arg(int argc, char **argv, int *flag)
+char		*input_arg(int argc, char **argv)
 {
 	int		fd;
 	int		fr;
@@ -27,11 +27,10 @@ char		*input_arg(int argc, char **argv, int *flag)
 	{
 		fd = open(argv[1], O_RDONLY);
 		if (fd < 3)
-			*flag |= 1;
+			return (NULL);
 	}
-	fr = read(fd, buf, 660);
-	if (fr < 0)
-		*flag |= 4;
+	if ((fr = read(fd, buf, 660)) < 0)
+		return (NULL);
 	if (fd > 2)
 		close(fd);
 	buf[fr] = 0;
@@ -116,8 +115,8 @@ void		fil_struct(t_fillit *tetr, char *buf, int n_elem, int col_tetr)
 	t_fillit	*fig;
 
 	fig = tetr + n_elem;
-	ft_bzero(fig->tetr_char,22); 
-	ft_bzero(fig->tetr,32); 
+	ft_bzero(fig->tetr_char, 22);
+	ft_bzero(fig->tetr, 32);
 	fig->next = (n_elem == col_tetr - 1) ? tetr : (tetr + n_elem + 1);
 	fig->prev = (n_elem == 0) ? (tetr + col_tetr - 1) : (tetr + n_elem - 1);
 	fig->set = 0;
@@ -136,19 +135,21 @@ t_fillit	*create_mas(int argc, char **argv)
 	char		*buf;
 	int			col_tetr;
 	int			i;
-	int			flag;
 
 	i = -1;
-	flag = 0;
-	buf = input_arg(argc, argv, &flag);
-	if (buf)
-		check_buf(buf, &flag);
-	if (flag)
+	if (!(buf = input_arg(argc, argv)))
+		return (NULL);
+	if (!check_buf(buf))
 	{
-		ft_putstr("error\n");
+		free(buf);
+		return (NULL);
 	}
 	col_tetr = (ft_strlen(buf) + 1) / 21;
-	tetr = (t_fillit*)malloc(sizeof(t_fillit) * col_tetr);
+	if (!(tetr = (t_fillit*)malloc(sizeof(t_fillit) * col_tetr)))
+	{
+		free(buf);
+		return (NULL);
+	}
 	while (++i < col_tetr)
 		fil_struct(tetr, buf, i, col_tetr);
 	free(buf);
@@ -156,15 +157,13 @@ t_fillit	*create_mas(int argc, char **argv)
 	return (tetr);
 }
 
-void		check_buf(char *buf, int *flag)
+int			check_buf(char *buf)
 {
-	int		str_ln;
-	
-	if (!((((ft_strlen(buf) + 1) % 21) == 0) && (buf[ft_strlen(buf)] == 0)))
-		*flag |= 8;
-	else 
-	{
-		str_ln = ft_strlen(buf);
+	int		flag;
 
-	}
+	if (!((((ft_strlen(buf) + 1) % 21) == 0) && (buf[ft_strlen(buf)] == 0)))
+		flag = 0;
+	else
+		flag = 1;
+	return (flag);
 }
