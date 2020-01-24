@@ -6,11 +6,13 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 22:10:17 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/24 18:43:34 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/24 22:22:30 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+extern const short		g_valid[];
 
 char		*input_arg(int argc, char **argv)
 {
@@ -19,16 +21,13 @@ char		*input_arg(int argc, char **argv)
 	char	*buf;
 
 	fd = 0;
-	if (argc > 2)
+	if (argc != 2)
 		return (NULL);
 	if (!(buf = (char*)malloc(661 * sizeof(char))))
 		return (NULL);
-	if (argc == 2)
-	{
-		fd = open(argv[1], O_RDONLY);
-		if (fd < 3)
-			return (NULL);
-	}
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 3)
+		return (NULL);
 	if ((fr = read(fd, buf, 660)) < 0)
 		return (NULL);
 	if (fd > 2)
@@ -47,20 +46,33 @@ void		sh_tl_bit(t_fillit *fig)
 		fig->tetr_bit >>= 1;
 }
 
-void		conv_chtosh(t_fillit *fig)
+int		conv_chtosh(t_fillit *fig)
 {
 	int		i;
+	int		flag;
+	char	*buf;
 
-	i = 19;
+	buf = fig->tetr_char;
+	i = 20;
 	while (--i >= 0)
 	{
-		if ((fig->tetr_char[i] == '#') || (fig->tetr_char[i] == '.'))
+		flag = 0;
+		if ((buf[i] == '#') || (buf[i] == '.') || buf[i] == '\n')
 		{
-			fig->tetr_bit <<= 1;
-			if (fig->tetr_char[i] == '#')
-				fig->tetr_bit |= 1;
+			if (buf[i] == '#' || buf[i] == '.')
+			{
+				fig->tetr_bit <<= 1;
+				if (buf[i] == '#')
+					fig->tetr_bit |= 1;
+			}
+		}
+		else
+		{
+			flag = 1;
+			break ;
 		}
 	}
+	return (flag);
 }
 
 void		conv_shtoarr(t_fillit *fig)
@@ -110,7 +122,7 @@ void		search_width_tetr(t_fillit *fig)
 	fig->width_tetr = width_tetr;
 }
 
-void		fil_struct(t_fillit *tetr, char *buf, int n_elem, int col_tetr)
+int			fil_struct(t_fillit *tetr, char *buf, int n_elem, int col_tetr)
 {
 	t_fillit	*fig;
 
@@ -122,11 +134,13 @@ void		fil_struct(t_fillit *tetr, char *buf, int n_elem, int col_tetr)
 	fig->set = 0;
 	ft_strncpy(fig->tetr_char, &buf[n_elem * 21], 21);
 	fig->tetr_bit = 0;
-	conv_chtosh(fig);
+	if (conv_chtosh(fig))
+		return (0);
 	sh_tl_bit(fig);
 	search_width_tetr(fig);
 	search_height_tetr(fig);
 	conv_shtoarr(fig);
+	return (1);
 }
 
 t_fillit	*create_mas(int argc, char **argv)
@@ -151,7 +165,8 @@ t_fillit	*create_mas(int argc, char **argv)
 		return (NULL);
 	}
 	while (++i < col_tetr)
-		fil_struct(tetr, buf, i, col_tetr);
+		if (!fil_struct(tetr, buf, i, col_tetr))
+			return (NULL);
 	free(buf);
 	buf = NULL;
 	return (tetr);
@@ -165,5 +180,25 @@ int			check_buf(char *buf)
 		flag = 0;
 	else
 		flag = 1;
+	return (flag);
+}
+
+int		valid_tet(t_fillit *tetr, int col_tetr)
+{
+	int		i;
+	int		n;
+	int		flag;
+
+	n = -1;
+	while (++n < col_tetr)
+	{
+		flag = 0;
+		i = -1;
+		while (++i < 19)
+			if ((tetr + n)->tetr_bit == g_valid[i])
+				flag = 1;
+		if (!flag)
+			return (0);
+	}
 	return (flag);
 }

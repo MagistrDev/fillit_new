@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 18:55:17 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/24 18:58:40 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/24 21:17:20 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 # include "fillit.h"
 
-const short		g_valid[4] = {0, 0, 0, 0};
+typedef struct	s_main_struct
+{
+	int			i;
+	int			col_tetr;
+	int			err_cmp;
+	int			sq;
+}				t_kostil;
 
 #endif

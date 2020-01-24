@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 18:50:42 by Ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/24 16:01:45 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/24 21:06:40 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 # include <string.h>
 # if __APPLE__ || __MACH__ || __linux__
 #  include <unistd.h>
-# endif
-# if __WINDOWS__
+# elif __WINDOWS__
 #  include <io.h>
 # endif
 # include <stdlib.h>
@@ -29,4 +28,5 @@
 # include "shift_bits.h"
 # include "place.h"
 # include "print.h"
+# include "main.h"
 #endif

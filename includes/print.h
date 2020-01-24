@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 01:21:32 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/24 18:57:34 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/24 22:50:02 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 
 # include "fillit.h"
 
-void	print_tetr(t_fillit *tetr, int sq);
-void	print_map(t_fillit *tetr, int sq);
-void	test(t_uint64 *arr, int sq);
-void	print_table(t_fillit *tetr, int sq);
+void	fil_ch_lf(char *buf, int col_tetr, int sq);
+void	print_map(t_fillit *tetr, int sq, int col_tetr);
 
 #endif
