@@ -6,40 +6,32 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 22:10:17 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/24 09:57:48 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/24 18:04:46 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char		*input_arg(int argc, char **argv)
+char		*input_arg(int argc, char **argv, int *flag)
 {
 	int		fd;
 	int		fr;
 	char	*buf;
 
 	fd = 0;
-	buf = (char*)malloc(661 * sizeof(char));
+	if (argc > 2)
+		return (NULL);
+	if (!(buf = (char*)malloc(661 * sizeof(char))))
+		return (NULL);
 	if (argc == 2)
 	{
 		fd = open(argv[1], O_RDONLY);
 		if (fd < 3)
-		{
-			write(1, "error file\n", 11);
-			return (NULL);
-		}
-	}
-	if (argc > 2)
-	{
-		printf("error fd");
-		return (NULL);
+			*flag |= 1;
 	}
 	fr = read(fd, buf, 660);
 	if (fr < 0)
-	{
-		write(1, "error file\n", 11);
-		return (NULL);
-	}
+		*flag |= 4;
 	if (fd > 2)
 		close(fd);
 	buf[fr] = 0;
@@ -121,18 +113,15 @@ void		search_width_tetr(t_fillit *fig)
 
 void		fil_struct(t_fillit *tetr, char *buf, int n_elem, int col_tetr)
 {
-	int			i;
 	t_fillit	*fig;
 
-	i = 4;
 	fig = tetr + n_elem;
-	while (i--)
-		fig->tetr[i] = 0;
+	ft_bzero(fig->tetr_char,22); 
+	ft_bzero(fig->tetr,32); 
 	fig->next = (n_elem == col_tetr - 1) ? tetr : (tetr + n_elem + 1);
 	fig->prev = (n_elem == 0) ? (tetr + col_tetr - 1) : (tetr + n_elem - 1);
 	fig->set = 0;
-	ft_strncpy(fig->tetr_char, &buf[n_elem * 21], 20);
-	fig->tetr_char[20] = 0;
+	ft_strncpy(fig->tetr_char, &buf[n_elem * 21], 21);
 	fig->tetr_bit = 0;
 	conv_chtosh(fig);
 	sh_tl_bit(fig);
@@ -147,11 +136,17 @@ t_fillit	*create_mas(int argc, char **argv)
 	char		*buf;
 	int			col_tetr;
 	int			i;
+	int			flag;
 
 	i = -1;
-	buf = input_arg(argc, argv);
-	if (!(check_buf(buf)))
-		printf("exit");
+	flag = 0;
+	buf = input_arg(argc, argv, &flag);
+	if (buf)
+		check_buf(buf, &flag);
+	if (flag)
+	{
+		ft_putstr("error\n");
+	}
 	col_tetr = (ft_strlen(buf) + 1) / 21;
 	tetr = (t_fillit*)malloc(sizeof(t_fillit) * col_tetr);
 	while (++i < col_tetr)
@@ -161,12 +156,15 @@ t_fillit	*create_mas(int argc, char **argv)
 	return (tetr);
 }
 
-int			check_buf(char *buf)
+void		check_buf(char *buf, int *flag)
 {
-	int	flag;
+	int		str_ln;
+	
+	if (!((((ft_strlen(buf) + 1) % 21) == 0) && (buf[ft_strlen(buf)] == 0)))
+		*flag |= 8;
+	else 
+	{
+		str_ln = ft_strlen(buf);
 
-	flag = 0;
-	if ((((ft_strlen(buf) + 1) % 21) == 0) && (buf[ft_strlen(buf)] == 0))
-		flag = 1;
-	return (flag);
+	}
 }

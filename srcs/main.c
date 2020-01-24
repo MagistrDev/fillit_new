@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 18:50:02 by Ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/24 11:15:02 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/24 18:03:34 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,16 @@ int		main(int argc, char **argv)
 	int			err_cmp;
 	int			sq;
 
-	err_cmp = 0;
-	i = 4;
-	while (i--)
-		map[i] = 0;
-	tetr = create_mas(argc, argv);
-	i = 0;
+	if (!(tetr = create_mas(argc, argv)))
+	{
+		ft_putstr("error\n");
+		return (0);
+	}
+	ft_bzero(map,32);	
 	col_tetr = tetr->prev - tetr + 1;
 	sq = ft_sqrt(col_tetr * 4);
+	err_cmp = 0;
+	i = 0;
 	while (i < col_tetr)
 	{
 		conv_shtoarr(tetr + i);
