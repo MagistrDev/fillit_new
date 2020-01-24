@@ -28,6 +28,7 @@ SRCS = shift_bits.c\
 	check_input.c\
 	print.c\
 	place.c\
+	sub.c\
 	main.c
 
 all: $(NAME)
