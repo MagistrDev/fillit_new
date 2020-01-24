@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 22:10:17 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/24 22:22:30 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/24 23:54:36 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ int		conv_chtosh(t_fillit *fig)
 	i = 20;
 	while (--i >= 0)
 	{
-		flag = 0;
-		if ((buf[i] == '#') || (buf[i] == '.') || buf[i] == '\n')
+		flag = 1;
+		if ((buf[i] == '#') || (buf[i] == '.') || (buf[i] == '\n'))
 		{
 			if (buf[i] == '#' || buf[i] == '.')
 			{
@@ -68,7 +68,7 @@ int		conv_chtosh(t_fillit *fig)
 		}
 		else
 		{
-			flag = 1;
+			flag = 0;
 			break ;
 		}
 	}
@@ -134,7 +134,7 @@ int			fil_struct(t_fillit *tetr, char *buf, int n_elem, int col_tetr)
 	fig->set = 0;
 	ft_strncpy(fig->tetr_char, &buf[n_elem * 21], 21);
 	fig->tetr_bit = 0;
-	if (conv_chtosh(fig))
+	if (!conv_chtosh(fig))
 		return (0);
 	sh_tl_bit(fig);
 	search_width_tetr(fig);

@@ -30,12 +30,13 @@ SRCS = shift_bits.c\
 	place.c\
 	main.c
 
-all: lib $(NAME)
+all: $(NAME)
 
 lib :
 	make -C libft/
 
 $(NAME) : $(addprefix includes/,$(HEADER)) $(OBJ)
+	make -C libft/
 	$(CC) -o $(NAME) $(FLAGS) $(addprefix $(OBJ_DIR), $(SRCS:.c=.o)) -I./$(INC_DIR)  -L./libft -I./libft/ -lft
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INC_DIR)%.h 
