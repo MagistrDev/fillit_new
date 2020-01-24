@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 01:22:12 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/22 23:02:31 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/24 09:17:46 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,42 +69,47 @@ void	print_map(t_fillit *tetr, int sq)
 	int				col_tetr;
 	int				i;
 	int				n;
+	int				row;
+	int				col;
 	int				n_elem;
 	int				x;
+	int				num;
 	unsigned short	*sub;
 
+	(void)n;
+	
+	(void)sub;
 	x = 0;
 	n_elem = 0;
 	col_tetr = tetr->prev - tetr + 1;
+	ft_memset(buf, '.',sq * (sq + 1));
 	buf[sq * (sq + 1)] = 0;
-	
+	i = 0;
+	while (i++ <= col_tetr)
+	{
+		n = i*sq + i-1;
+		buf[n] = '\n';
+	}
 	while (n_elem < col_tetr)
 	{
-		n = 0;
-		sub = (unsigned short*)((tetr + n_elem)->tetr);
-		while (n < sq)
-		{ 
-			i = 0;
-			while (i < sq)
+		num = 0;
+		row = 0;
+		while (row < sq)
+		{
+			sub = (unsigned short*)(tetr + n_elem)->tetr;
+ 			col = 0;
+ 			while (col < sq)
 			{
-				if (!(i % (sq + 1)) && (i / (sq + 1)))
-					x++;
-				if (sub[n] & (1 << i))
-					buf[(i + n * (sq )) + x] = 'A' + n_elem;
-				i++;
+				if (*(sub + row) & (1 << col))
+					buf[num + row] = 'A' + n_elem;
+				num++;
+				col++;
 			}
-			n++;
+			row++;
 		}
 		n_elem++;
 	}
-	i = 0;
-	while (i < sq * (sq + 1))
-	{
-		if (!(i % (sq + 1)) && (i / (sq + 1)))
-			buf[i] = '\n';
-		i++;
-	}
-	printf("%i ---\n%s\n---\n", sq * (sq + 1) + 1 , buf);
+	ft_putstr(buf);
 }
 
 void		print_table(t_fillit *tetr, int sq)

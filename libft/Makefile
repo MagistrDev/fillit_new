@@ -6,7 +6,7 @@
 #    By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/15 21:27:34 by ecelsa            #+#    #+#              #
-#    Updated: 2020/01/24 05:30:38 by ecelsa           ###   ########.fr        #
+#    Updated: 2020/01/24 07:22:56 by ecelsa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,6 +92,6 @@ clean:
 	@/bin/rm -f $(SRCS:.c=.o)
 
 fclean: clean
-	@/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)x
 
 re: fclean all

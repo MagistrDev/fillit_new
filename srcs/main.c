@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 18:50:02 by Ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/22 23:25:03 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/24 08:38:57 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int		main(int argc, char **argv)
 	int			err_cmp;
 	int			sq;
 
-	printf("start\n");
 	err_cmp = 0;
 	i = 4;
 	while (i--)
@@ -69,7 +68,7 @@ int		main(int argc, char **argv)
 		place_tetr(tetr + i, map, sq);
 		i++;
 	}
-	print_table(tetr, sq);
+	print_map(tetr, sq);
 	free(tetr);
 	tetr = NULL;
 	return (0);
