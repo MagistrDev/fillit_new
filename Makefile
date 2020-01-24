@@ -42,10 +42,12 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INC_DIR)%.h
 	$(CC) $(FLAGS) -o $@ -c $< -I./$(INC_DIR) -I./libft/ 
 
 clean :
+	make clean -C libft/
 	/bin/rm -f $(OBJ) 
 
 
 fclean: clean
+	make fclean -C libft/
 	/bin/rm -f $(NAME)
 
 re : fclean all 
