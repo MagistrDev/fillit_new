@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sub.h                                              :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/16 14:56:08 by Ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/24 11:14:51 by ecelsa           ###   ########.fr       */
+/*   Created: 2020/01/24 11:12:22 by ecelsa            #+#    #+#             */
+/*   Updated: 2020/01/24 11:12:23 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SUB_H
-# define SUB_H
-
-typedef unsigned long long		t_uint64;
-typedef unsigned long long int	t_ulli;
-typedef struct	s_fillit
+int			ft_sqrt(int nbr)
 {
-	char			tetr_char[22];
-	unsigned short	tetr_bit;
-	t_uint64		tetr[4];
-	int				width_tetr;
-	int				height_tetr;
-	int				set;
-	struct s_fillit	*next;
-	struct s_fillit	*prev;
-}				t_fillit;
+	int	sqrt;
 
-#endif
+	sqrt = 1;
+	while (sqrt * sqrt < nbr)
+		sqrt++;
+	return (sqrt);
+}

@@ -6,21 +6,11 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 18:50:02 by Ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/24 08:38:57 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/24 11:15:02 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "print.h"
-
-int			ft_sqrt(int nbr)
-{
-	int	sqrt;
-
-	sqrt = 1;
-	while (sqrt * sqrt < nbr)
-		sqrt++;
-	return (sqrt);
-}
 
 int		main(int argc, char **argv)
 {
@@ -73,4 +63,3 @@ int		main(int argc, char **argv)
 	tetr = NULL;
 	return (0);
 }
- 

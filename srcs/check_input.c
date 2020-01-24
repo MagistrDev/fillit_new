@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 22:10:17 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/24 09:56:47 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/24 09:57:48 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void		conv_chtosh(t_fillit *fig)
 
 void		conv_shtoarr(t_fillit *fig)
 {
-	(void)fig;
 	fig->tetr[0] = 0;
 	fig->tetr[1] = 0;
 	fig->tetr[2] = 0;

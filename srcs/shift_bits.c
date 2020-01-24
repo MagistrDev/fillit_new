@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 19:18:55 by Ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/22 21:03:15 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/24 11:18:25 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void		shift_bit_arr(t_uint64 *arr, int arr_size, int shift)
 	else
 	{
 		shift *= -1;
-		shift_bit_arr_right(arr, arr_size, shift); 
+		shift_bit_arr_right(arr, arr_size, shift);
 	}
 }
 

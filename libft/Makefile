@@ -6,7 +6,7 @@
 #    By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/15 21:27:34 by ecelsa            #+#    #+#              #
-#    Updated: 2020/01/24 09:46:26 by ecelsa           ###   ########.fr        #
+#    Updated: 2020/01/24 11:06:32 by ecelsa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,6 +77,7 @@ SRCS = ft_memset.c\
 	ft_strsplit.c\
 	ft_lstmap.c\
 	ft_strrev.c\
+	ft_sqrt.c\
 	get_next_line.c
 
 OBJ_DIR = /obj

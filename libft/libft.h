@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 21:37:55 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/22 17:13:47 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/24 11:08:38 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ size_t			ft_lstsize(t_list *begin_list);
 void			ft_lstpback(t_list **begin_list, void *condent);
 void			ft_strskip(char **s, char c, char f);
 void			ft_arrdel(char ***arr, size_t size);
+int				ft_sqrt(int nbr);
 int				get_next_line(const int fd, char **line);
 
 #endif
