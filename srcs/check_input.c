@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 22:10:17 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/22 20:09:07 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/24 09:56:47 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void		search_height_tetr(t_fillit *fig)
 {
 	int		height_tetr;
 	short	bit;
-	
+
 	bit = fig->tetr_bit;
 	height_tetr = 0;
 	while (bit & 0xf)
@@ -107,7 +107,7 @@ void		search_width_tetr(t_fillit *fig)
 {
 	short	bit;
 	int		width_tetr;
-	
+
 	bit = fig->tetr_bit;
 	width_tetr = 0;
 	bit |= (bit >> 4) | (bit >> 8) | (bit >> 12);
@@ -132,7 +132,7 @@ void		fil_struct(t_fillit *tetr, char *buf, int n_elem, int col_tetr)
 	fig->next = (n_elem == col_tetr - 1) ? tetr : (tetr + n_elem + 1);
 	fig->prev = (n_elem == 0) ? (tetr + col_tetr - 1) : (tetr + n_elem - 1);
 	fig->set = 0;
- 	ft_strncpy(fig->tetr_char, &buf[n_elem * 21], 20);
+	ft_strncpy(fig->tetr_char, &buf[n_elem * 21], 20);
 	fig->tetr_char[20] = 0;
 	fig->tetr_bit = 0;
 	conv_chtosh(fig);

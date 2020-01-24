@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 00:09:03 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/22 21:56:16 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/24 09:52:19 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,6 @@ void	remove_fig(t_fillit *fig, t_uint64 *map)
 int		place_tetr(t_fillit *tetr, t_uint64 *map, int sq)
 {
 	(void)sq;
-	place_tetr_on_map(tetr, map); 
+	place_tetr_on_map(tetr, map);
 	return (tetr->set);
-} 
+}
