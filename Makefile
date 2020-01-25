@@ -33,6 +33,7 @@ lib :
 
 $(NAME) : $(OBJ)
 	make -C libft/
+	mkdir -L obj
 	$(CC) -o $(NAME) $(FLAGS) $(addprefix $(OBJ_DIR), $(SRCS:.c=.o)) -I./$(INC_DIR)  -L./libft -I./libft/ -lft
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
