@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 18:50:02 by Ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/25 01:31:17 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/25 19:10:45 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,38 @@ const short		g_valid[19] = {
 	0xf, 0x1111, 0x33, 0x17, 0x47, 0x71, 0x74, 0x311, 0x113, 0x223, 0x322,
 	0x27, 0x232, 0x72, 0x131, 0x63, 0x132, 0x36, 0x231
 };
+
+void	search_height_tetr(t_fillit *fig)
+{
+	int		height_tetr;
+	short	bit;
+
+	bit = fig->tetr_bit;
+	height_tetr = 0;
+	while (bit & 0xf)
+	{
+		height_tetr++;
+		bit >>= 4;
+	}
+	fig->height_tetr = height_tetr;
+}
+
+void	search_width_tetr(t_fillit *fig)
+{
+	short	bit;
+	int		width_tetr;
+
+	bit = fig->tetr_bit;
+	width_tetr = 0;
+	bit |= (bit >> 4) | (bit >> 8) | (bit >> 12);
+	bit &= 0xf;
+	while (bit & 1)
+	{
+		bit >>= 1;
+		width_tetr++;
+	}
+	fig->width_tetr = width_tetr;
+}
 
 void	out_of_bottom_border(t_fillit *tetr, int *i, t_uint64 *map, int *sq)
 {

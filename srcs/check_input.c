@@ -6,30 +6,13 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 22:10:17 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/25 01:18:03 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/25 19:10:25 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
 extern const short		g_valid[];
-
-void		search_width_tetr(t_fillit *fig)
-{
-	short	bit;
-	int		width_tetr;
-
-	bit = fig->tetr_bit;
-	width_tetr = 0;
-	bit |= (bit >> 4) | (bit >> 8) | (bit >> 12);
-	bit &= 0xf;
-	while (bit & 1)
-	{
-		bit >>= 1;
-		width_tetr++;
-	}
-	fig->width_tetr = width_tetr;
-}
 
 int			fil_struct(t_fillit *tetr, char *buf, int n_elem, int col_tetr)
 {
@@ -92,8 +75,7 @@ int			check_buf(char *buf)
 	return (flag);
 }
 
-
-int col_lf(char *str)
+int			col_lf(char *str)
 {
 	int i;
 	int col;
@@ -118,8 +100,8 @@ int			valid_tet(t_fillit *tetr, int col_tetr)
 	n = -1;
 	while (++n < col_tetr)
 	{
-		if (!((((tetr + n) == tetr->prev) & (col_lf((tetr + n)->tetr_char) == 4))
-			|| (((tetr + n) != tetr->prev) &
+		if (!((((tetr + n) == tetr->prev) & (col_lf((tetr + n)->tetr_char)
+		== 4)) || (((tetr + n) != tetr->prev) &
 			(col_lf((tetr + n)->tetr_char) == 5))))
 			return (0);
 		flag = 0;
@@ -128,7 +110,7 @@ int			valid_tet(t_fillit *tetr, int col_tetr)
 			if ((tetr + n)->tetr_bit == g_valid[i])
 				flag = 1;
 		if (!flag)
-			return (0);		
+			return (0);
 	}
 	return (flag);
 }

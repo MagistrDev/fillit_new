@@ -16,12 +16,7 @@ OBJ_DIR = obj/
 
 OBJ = $(addprefix $(OBJ_DIR),$(SRCS:.c=.o))
 
-HEADER = fillit.h\
-	sub.h\
-	check_input.h\
-	place.h\
-	print.h\
-	shift_bits.h\
+HEADER = fillit.h
 
 SRCS = shift_bits.c\
 	tet_algorithm.c\
@@ -36,11 +31,11 @@ all: $(NAME)
 lib :
 	make -C libft/
 
-$(NAME) : $(addprefix includes/,$(HEADER)) $(OBJ)
+$(NAME) : $(OBJ)
 	make -C libft/
 	$(CC) -o $(NAME) $(FLAGS) $(addprefix $(OBJ_DIR), $(SRCS:.c=.o)) -I./$(INC_DIR)  -L./libft -I./libft/ -lft
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INC_DIR)%.h 
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	$(CC) $(FLAGS) -o $@ -c $< -I./$(INC_DIR) -I./libft/ 
 
 clean :
