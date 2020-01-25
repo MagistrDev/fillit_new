@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 00:25:54 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/25 19:06:56 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/25 19:17:34 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,33 +48,25 @@ int		conv_chtosh(t_fillit *fig)
 	int		i;
 	int		flag;
 	char	*buf;
-	int		x;
 
 	buf = fig->tetr_char;
 	i = 20;
-	x = 0;
-	flag = 1;
+	flag = 0;
 	while (--i >= 0)
 	{
-		if ((buf[i] == '#') || (buf[i] == '.') || (buf[i] == '\n'))
+		if (!((buf[i] == '#') || (buf[i] == '.') || (buf[i] == '\n')))
+			break ;
+		if (buf[i] == '#' || buf[i] == '.')
 		{
-			if (buf[i] == '#' || buf[i] == '.')
+			fig->tetr_bit <<= 1;
+			if (buf[i] == '#')
 			{
-				fig->tetr_bit <<= 1;
-				if (buf[i] == '#')
-				{
-					fig->tetr_bit |= 1;
-					x++;
-				}
+				fig->tetr_bit |= 1;
+				flag++;
 			}
 		}
-		else
-		{
-			flag = 0;
-			break ;
-		}
 	}
-	if (x != 4)
+	if (flag != 4)
 		flag = 0;
 	return (flag);
 }

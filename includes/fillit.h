@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 18:50:42 by Ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/25 19:12:13 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/25 19:19:36 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
-# if __APPLE__ || __MACH__ || __linux__
-#  include <unistd.h>
-# elif __WINDOWS__
-#  include <io.h>
-# endif
+# include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
 # include "libft.h"
