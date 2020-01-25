@@ -6,7 +6,7 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 00:25:54 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/25 19:17:34 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/25 19:49:59 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*input_arg(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 1)
 		return (NULL);
-	if ((fr = read(fd, buf, 660)) < 0)
+	if ((fr = read(fd, buf, 660)) < 0 || fr > 546)
 		return (NULL);
 	close(fd);
 	buf[fr] = 0;

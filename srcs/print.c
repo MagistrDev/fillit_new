@@ -6,22 +6,25 @@
 /*   By: ecelsa <ecelsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 01:22:12 by ecelsa            #+#    #+#             */
-/*   Updated: 2020/01/25 00:24:21 by ecelsa           ###   ########.fr       */
+/*   Updated: 2020/01/25 20:42:38 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	fil_ch_lf(char *buf, int col_tetr, int sq)
+void	fil_ch_lf(char *buf, int sq)
 {
-	int		n_elem;
+	int		line;
 
 	ft_memset(buf, 0, 299);
 	ft_memset(buf, '.', sq * (sq + 1));
-	buf[sq * (sq + 1) - 1] = 0;
-	n_elem = 0;
-	while (n_elem++ <= col_tetr + 1)
-		buf[n_elem * sq + n_elem - 1] = '\n';
+	buf[sq * (sq + 1)] = 0;
+	line = 1;
+	while (line <= sq)
+	{
+		buf[line * sq + line - 1] = '\n';
+		line++;
+	}
 }
 
 void	print_map(t_fillit *tetr, int sq, int col_tetr)
@@ -32,7 +35,8 @@ void	print_map(t_fillit *tetr, int sq, int col_tetr)
 	int				num;
 	unsigned short	*sub;
 
-	fil_ch_lf(buf, col_tetr, sq);
+	ft_bzero(buf,299);
+	fil_ch_lf(buf, sq);
 	n_elem = -1;
 	while (++n_elem < col_tetr)
 	{
